@@ -1,0 +1,63 @@
+{
+  "name": "k2gl/composer-license-gate",
+  "description": "Composer plugin that checks your dependencies' licenses against an allow/deny policy and can fail the install on a violation.",
+  "homepage": "https://github.com/k2gl/composer-license-gate",
+  "type": "composer-plugin",
+  "license": "MIT",
+  "keywords": [
+    "composer-plugin",
+    "license",
+    "spdx",
+    "compliance",
+    "policy",
+    "dependencies",
+    "audit"
+  ],
+  "authors": [
+    {
+      "name": "Nick Harin",
+      "email": "l0gic@ya.ru"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/k2gl/composer-license-gate/issues",
+    "source": "https://github.com/k2gl/composer-license-gate"
+  },
+  "require": {
+    "php": ">=8.1",
+    "ext-json": "*",
+    "composer-plugin-api": "^2.0"
+  },
+  "require-dev": {
+    "composer/composer": "^2.4",
+    "phpunit/phpunit": "^10|^11|^12",
+    "phpstan/phpstan": "^2.1",
+    "laravel/pint": "~1.20.0",
+    "k2gl/phpunit-fluent-assertions": "^12"
+  },
+  "autoload": {
+    "psr-4": {
+      "K2gl\\ComposerLicenseGate\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "K2gl\\ComposerLicenseGate\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "class": "K2gl\\ComposerLicenseGate\\Plugin"
+  },
+  "minimum-stability": "stable",
+  "scripts": {
+    "test": "phpunit",
+    "phpstan": "phpstan analyse",
+    "cs": "pint --test",
+    "cs-fix": "pint",
+    "check": [
+      "@test",
+      "@phpstan",
+      "@cs"
+    ]
+  }
+}
