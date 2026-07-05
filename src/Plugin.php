@@ -11,6 +11,7 @@ use Composer\EventDispatcher\EventSubscriberInterface;
 use Composer\Installer\PackageEvent;
 use Composer\Installer\PackageEvents;
 use Composer\IO\IOInterface;
+use Composer\Package\CompletePackageInterface;
 use Composer\Plugin\PluginInterface;
 use K2gl\ComposerLicenseGate\Exception\LicenseViolationException;
 
@@ -64,7 +65,9 @@ final class Plugin implements PluginInterface, EventSubscriberInterface
         if ($package === null) {
             return;
         }
-        $this->report($package->getName(), $this->checker->check($package->getName(), $package->getLicense()));
+        // getLicense() lives on CompletePackageInterface, not the base PackageInterface.
+        $licenses = $package instanceof CompletePackageInterface ? array_values($package->getLicense()) : [];
+        $this->report($package->getName(), $this->checker->check($package->getName(), $licenses));
     }
 
     private function report(string $package, LicenseResult $result): void
