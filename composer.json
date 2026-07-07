@@ -1,6 +1,6 @@
 {
   "name": "k2gl/composer-license-gate",
-  "description": "Composer plugin that checks your dependencies' licenses against an allow/deny policy and can fail the install on a violation.",
+  "description": "Composer plugin that checks your dependencies' licenses against an allow/deny policy and can fail the install on a violation",
   "homepage": "https://github.com/k2gl/composer-license-gate",
   "type": "composer-plugin",
   "license": "MIT",
