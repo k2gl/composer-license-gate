@@ -18,8 +18,8 @@ final class PolicyTest extends TestCase
         $policy = Policy::fromExtra([]);
 
         fact($policy->mode)->is(Policy::MODE_WARN);
-        fact($policy->allow)->is([]);
-        fact($policy->deny)->is([]);
+        fact($policy->allow)->isEmptyArray();
+        fact($policy->deny)->isEmptyArray();
         fact($policy->requireLicense)->false();
     }
 
